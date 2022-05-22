@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Conectar mi CSS -->
+    <link rel="stylesheet" href="{% static 'Inicio/css/estilo-micros.css' %}">
+    <link rel="stylesheet" href="{% static 'Inicio/css/footer.css' %}">
+    <!--Font Awesome para los icons-->
+    <script src="https://kit.fontawesome.com/1877fd7acc.js" crossorigin="anonymous"></script>
+    <!--Fuente 'Quicksand'-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand fw-bold" href="/index.html">HSC<br>Componentes</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active " aria-current="page" href="/index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bag-shopping"></i> Tienda</a></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/pages/microfonos.html">Micrófonos</a></li>
+                      
+                      <li><a class="dropdown-item" href="/pages/teclados.html">Teclados</a></li>
+                      <li><a class="dropdown-item" href="/pages/mouse.html">Mouse Gamer</a></li>
+                      <li><a class="dropdown-item" href="/pages/graficas.html">Tarjetas gráficas</a></li>
+                      <li><a class="dropdown-item" href="/pages/procesadores.html">Procesadores</a></li>
+                      <li><a class="dropdown-item" href="/pages/rams.html">Memorias</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/pages/inicio_sesion.html"><i class="fa-solid fa-user"></i> Mi cuenta</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/pages/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                  </li>
+
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Busca lo mejor!" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+          <div class="img-hd">
+            <div class="txt-hd">
+                {% block titulo %}
+                {% endblock titulo %}
+            </div>
+        </div>
+    </header>
+
+    <section class="items">
+        <div class="container" >
+            <div class="row items no-gutter">
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-1.html">{% block imagen1 %}
+                    {% endblock imagen1 %}
+                    
+                        {% block nombre1 %}
+                        {% endblock nombre1 %}
+                        {% block modelo1 %}
+                        {% endblock modelo1 %}
+                        {% block precio1 %}
+                        {% endblock precio1 %}
+                    </a>
+    
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-2.html">{% block imagen2 %}
+                    {% endblock imagen2 %}
+                    
+                        {% block nombre2 %}
+                        {% endblock nombre2 %}
+                        {% block modelo2 %}
+                        {% endblock modelo2 %}
+                        {% block precio2 %}
+                        {% endblock precio2 %}
+                    </a></div>
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-3.html">{% block imagen3 %}
+                    {% endblock imagen3 %}
+                    
+                        {% block nombre3 %}
+                        {% endblock nombre3 %}
+                        {% block modelo3 %}
+                        {% endblock modelo3 %}
+                        {% block precio3 %}
+                        {% endblock precio3 %}
+                    </a></div>
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-4.html">{% block imagen4 %}
+                    {% endblock imagen4 %}
+                    
+                        {% block nombre4 %}
+                        {% endblock nombre4 %}
+                        {% block modelo4 %}
+                        {% endblock modelo4 %}
+                        {% block precio4 %}
+                        {% endblock precio4 %}
+                    </a></div>
+            </div>
+        
+            <div class="row items no-gutter">
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-5.html">{% block imagen5 %}
+                    {% endblock imagen5 %}
+                    
+                        {% block nombre5 %}
+                        {% endblock nombre5 %}
+                        {% block modelo5 %}
+                        {% endblock modelo5 %}
+                        {% block precio5 %}
+                        {% endblock precio5 %}
+                    </a></div>
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-6.html">{% block imagen6 %}
+                    {% endblock imagen6 %}
+                    
+                        {% block nombre6 %}
+                        {% endblock nombre6 %}
+                        {% block modelo6 %}
+                        {% endblock modelo6 %}
+                        {% block precio6 %}
+                        {% endblock precio6 %}
+                    </a></div>
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-7.html">{% block imagen7 %}
+                    {% endblock imagen7 %}
+                    
+                        {% block nombre7 %}
+                        {% endblock nombre7 %}
+                        {% block modelo7 %}
+                        {% endblock modelo7 %}
+                        {% block precio7 %}
+                        {% endblock precio7 %}
+                    </a></div>
+                <div class="col-xl-3 col-md-6 col-sm-12"><a href="/PRODUCTOS/mic-8.html">{% block imagen8 %}
+                    {% endblock imagen8 %}
+                    
+                        {% block nombre8 %}
+                        {% endblock nombre8 %}
+                        {% block modelo8 %}
+                        {% endblock modelo8 %}
+                        {% block precio8 %}
+                        {% endblock precio8 %}
+                    </a></div>
+            </div>
+        </div>
+
+    </section>
+    <footer class="pie-pagina ">
+
+        <div class="container">
+            <div class="grupo-1 text-center">
+                <div class="row">
+    
+                    <div class="col-6">
+                        <div class="box">
+                            <h2>Sobre nosotros</h2>
+                            <ul class="lista">
+                                <li>13 finos</li>
+                                <li>Robamos terrible maldito y de menor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="box">
+                            <h2>Síguenos en nuestras redes</h2>
+                            <div class="red-social">
+                                <a href="#" class="fa fa-facebook redes-sociales"></a>
+                                <a href="#" class="fa fa-instagram redes-sociales"></a>
+                                <a href="#" class="fa fa-twitter redes-sociales"></a>
+                                <a href="#" class="fa fa-youtube redes-sociales"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>HSC Componentes</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>
