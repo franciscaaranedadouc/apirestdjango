@@ -1,10 +1,16 @@
 from django.shortcuts import render,redirect
 from .models import Usuario,Direccion,Comuna,Region,TipoUsuario
+from django.contrib import messages
 
 # Create your views here.
 def inicio(request):
 
     return render(request,'Inicio/index.html')
+
+
+def iniciar(request):
+
+    return render(request,'Inicio/inicio_sesion.html')
 
 
 def microfono(request):
@@ -54,9 +60,23 @@ def registrar_m (request):
     comuna2 = Comuna.objects.get(idComuna = comuna)
     region2 = Region.objects.get(idRegion = region)
     tipousuario2 = TipoUsuario.objects.get(idTipoUsuario = 2)
-    Usuario.objects.create(username = user , contrasennia = contra, nombre = nombree, apellido = apellido, email = correo,tipousuario = tipousuario2)
-    x = Usuario.objects.get(username = user)
-    Direccion.objects.create(descripcionDir = direccion, usuario = x,region = region2)
-    return redirect ('registrarse')
+    existe = None
+    try:
+        existe = Usuario.objects.get(username=user)
+        messages.error(request,'El usuario ya existe')
+        return redirect ('registrarse')
+    except:
+        Usuario.objects.create(username = user , contrasennia = contra, nombre = nombree, apellido = apellido, email = correo,tipousuario = tipousuario2)
+        x = Usuario.objects.get(username = user)
+        Direccion.objects.create(descripcionDir = direccion, usuario = x,region = region2)
+        return redirect ('iniciar')
+
+
+def iniciar_sesion (request):
+    usuario1 = request.POST['usuario']
+    
+    
+
+    
     
     

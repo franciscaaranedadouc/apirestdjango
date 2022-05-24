@@ -27,6 +27,10 @@ form.addEventListener("submit", e =>{
       mensajesMostrar += 'Seleccione una región. <br>'
       entrar = true
     }
+    if (comuna.value === "Selecciona una Comuna"){
+        mensajesMostrar += 'Seleccione una Comuna. <br>'
+        entrar = true
+      }
 
     if (contra1.value.length < 4 || contra1.value.length > 16) {
         mensajesMostrar += 'La contraseña no tiene el largo necesario. <br>';
@@ -39,6 +43,7 @@ form.addEventListener("submit", e =>{
     }
     if (entrar) {
         mensaje.innerHTML = mensajesMostrar;
+        e.preventDefault();
     } else {
         mensaje.innerHTML = "Enviado";
     }
