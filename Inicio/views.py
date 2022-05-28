@@ -4,12 +4,10 @@ from django.contrib import messages
 
 # Create your views here.
 def inicio(request):
-
     return render(request,'Inicio/index.html')
 
 
 def iniciar(request):
-
     return render(request,'Inicio/inicio_sesion.html')
 
 
@@ -72,8 +70,27 @@ def registrar_m (request):
         return redirect ('iniciar')
 
 
-def iniciar_sesion (request):
+def iniciar_sesion(request):
     usuario1 = request.POST['usuario']
+    contra1 = request.POST['contra']
+    try:
+        usuario2 = Usuario.objects.get(username = usuario1,contrasennia = contra1)
+
+        if(usuario2.tipousuario.idTipoUsuario == 1):
+            return redirect ('registrarse')
+        else:               
+            return redirect ('inicio')
+
+
+    except:
+        messages.error(request,'El usuario o la contraseña son incorrectos')
+        return redirect ('iniciar')
+
+        
+
+        
+
+
     
     
 

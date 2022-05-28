@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import inicio, microfono, mouse,registrar_m, registrarse,iniciar
+from .views import *
 
 urlpatterns = [
     path('', inicio, name="inicio"),
@@ -7,7 +7,11 @@ urlpatterns = [
     path('mouse/', mouse,name="mouse"),
     path('registrar/',registrar_m,name="registrar"),
     path('registrarse/',registrarse,name="registrarse"),
-    path('iniciar',iniciar,name="iniciar"),
-    path('iniciarse',iniciar,name ="iniciarse"),
+    
+    ##Pagina iniciar
+    path('iniciar/',iniciar,name="iniciar"),
+
+    ##Valida usuario
+    path('iniciarsesion/',iniciar_sesion,name ="iniciarsesion"),
    
 ]
