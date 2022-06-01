@@ -22,6 +22,8 @@ urlpatterns = [
     path('iniciarsesion/',iniciar_sesion,name ="iniciarsesion"),
 
     path('microfonos/',mostrarMic, name="mostrarMic"),
-    path('microfonos/<int:id>',micro, name="micro")
+    path('microfonos/<int:id>',micro, name="micro"),
+    #Carrito
+    path('carrito/',carrito, name="carrito")
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

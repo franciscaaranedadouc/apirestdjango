@@ -16,6 +16,10 @@ def menuadmin(request):
 
     return render(request,'Inicio/dashboard-admin.html')
 
+def carrito(request):
+
+    return render(request,'Inicio/carrito.html')
+
 def addprod (request):
     tipoProd = TipoProd.objects.all()
     marca = Marca.objects.all()
@@ -56,11 +60,6 @@ def registrar_m (request):
         x = Usuario.objects.get(username = user)
         Direccion.objects.create(descripcionDir = direccion, usuario = x,region = region2)
         return redirect ('iniciar')
-
-
-
-
-
 def iniciar_sesion(request):
     usuario1 = request.POST['usuario']
     contra1 = request.POST['contra']

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Conectar mi CSS -->
-    <link rel="stylesheet" href="/css/estilo-carrito.css">
+    <link rel="stylesheet" href="{% static 'Inicio/css/estilo-carrito.css' %}">
     <!--Fuente 'Quicksand'-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
 
 </head>
 
-<body class="fondo1">
+<body class="fondo1 d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -80,52 +80,30 @@
             <div class="col-md-10">
                 <h1 class="carr" id="carrito">Carrito</h1>
                 <table class="table table-dark ">
+                    <thead class="">
+                        <tr>
+                          <th scope="col" colspan="2" class="text-center">Producto(s)</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Cantidad</th>
+
+                        </tr>
+                      </thead>
                     <tbody>
                         <tr id="item1">
-                            <td align="center"><img class="im1" src="/img/img-micros/quadcastrojo.png" alt=""></td>
-                            <td>Hyper X Quadcast <br>
-                                <div style="margin-top: 20px;"><a href="#" onclick="eliminar()">Eliminar</a> </div>
+                            <!--Imagen del producto-->
+                            <td align="center"><img class="im1" src="  " alt=""></td>
+                            <!--Nombre-->
+                            <td>
+                                <br>
+                                <!--Eliminar Producto-->
+                                <div style="margin-top: 20px;"><a href="#"></a> </div>
                             </td>
-                            <td>$84.990</td>
-                            <td>Cantidad: 1</td>
+                            <!--Precio-->
+                            <td></td>
+                            <!--Cantidad-->
+                            <td></td>
                         </tr>
-                        <tr id="iteminvisible" >
-                            <td align="center" style="color: #000; padding-bottom: 120px;">.</td>
-                            <td style="color: #000; padding-bottom: 120px;">.
-                            </td>
-                            <td style="color: #000; margin-bottom: 120px;">.</td>
-                            <td style="color: #000; margin-bottom: 120px;">.</td>
-                        </tr>
-                        <tr id="item2">
-                            <td align="center"><img class="im1" src="/img/img-micros/seireni.jpg" alt=""></td>
-                            <td>Razer Seriren Mini<br>
-                                <div style="margin-top: 20px;"><a href="#" onclick="eliminar2()">Eliminar</a>
-                            </td>
-                            <td>$47.200</td>
-                            <td>Cantidad: 1</td>
-                        </tr>
-                        <tr id="iteminvisible2" >
-                            <td align="center" style="color: #000; padding-bottom: 120px;">.</td>
-                            <td style="color: #000; padding-bottom: 120px;">.</td>
-                            <td style="color: #000; margin-bottom: 120px;">.</td>
-                            <td style="color: #000; margin-bottom: 120px;">.</td>
-                        </tr>
-                        <tr id="item3">
-
-                            <td align="center"><img class="im1" src="/img/img-micros/Blueyetii.png" alt=""></td>
-                            <td>Blue Yeti Multipatron<br>
-                                <div style="margin-top: 20px;"><a href="#" onclick="eliminar3()">Eliminar</a>
-                            </td>
-                            <td>$89.790</td>
-                            <td>Cantidad: 1</td>
-                        </tr>
-                        <tr id="iteminvisible3" >
-                            <td align="center" style="color: #000; padding-bottom: 120px;">.</td>
-                            <td style="color: #000; padding-bottom: 120px;">.
-                            </td>
-                            <td style="color: #000; margin-bottom: 120px;">.</td>
-                            <td style="color: #000; margin-bottom: 120px;">.</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -141,42 +119,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+        <footer class="pie-pagina mt-auto">
 
-
-
-</body>
-<footer class="pie-pagina ">
-
-    <div class="container">
-        <div class="grupo-1 text-center">
-            <div class="row">
-                <div class="col-6">
-                    <div class="box">
-                        <h2>Sobre nosotros</h2>
-                        <ul class="lista">
-                            <li>13 finos</li>
-                            <li>Robamos terrible maldito y de menor</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="box">
-                        <h2>Síguenos en nuestras redes</h2>
-                        <div class="red-social">
-                            <a href="#" class="fa fa-facebook redes-sociales"></a>
-                            <a href="#" class="fa fa-instagram redes-sociales"></a>
-                            <a href="#" class="fa fa-twitter redes-sociales"></a>
-                            <a href="#" class="fa fa-youtube redes-sociales"></a>
+            <div class="container">
+                <div class="grupo-1 text-center">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="box">
+                                <h2>Sobre nosotros</h2>
+                                <ul class="lista">
+                                    <li>13 finos</li>
+                                    <li>Robamos terrible maldito y de menor</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="box">
+                                <h2>Síguenos en nuestras redes</h2>
+                                <div class="red-social">
+                                    <a href="#" class="fa fa-facebook redes-sociales"></a>
+                                    <a href="#" class="fa fa-instagram redes-sociales"></a>
+                                    <a href="#" class="fa fa-twitter redes-sociales"></a>
+                                    <a href="#" class="fa fa-youtube redes-sociales"></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+        
+        
                 </div>
             </div>
+            <div class="grupo-2">
+                <small>&copy; 2022 <b>HSC Componentes</b> - Todos los Derechos Reservados.</small>
+            </div>
+        </footer>
+</body>
 
-
-        </div>
-    </div>
-    <div class="grupo-2">
-        <small>&copy; 2022 <b>HSC Componentes</b> - Todos los Derechos Reservados.</small>
-    </div>
-</footer>
 </html>
