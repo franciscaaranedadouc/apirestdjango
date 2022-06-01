@@ -39,7 +39,7 @@
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bag-shopping"></i> Tienda</a></a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                        
-                      <li><a class="dropdown-item" href="/pages/microfonos.html">Micrófonos</a></li>
+                      <li><a class="dropdown-item" href="{% url 'mostrarMic' %}">Micrófonos</a></li>
                       <li><a class="dropdown-item" href="/pages/teclados.html">Teclados</a></li>
                       <li><a class="dropdown-item" href="/pages/mouse.html">Mouse Gamer</a></li>
                       <li><a class="dropdown-item" href="/pages/graficas.html">Tarjetas gráficas</a></li>
@@ -48,7 +48,7 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/pages/inicio_sesion.html"><i class="fa-solid fa-user"></i> Mi cuenta</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'iniciar' %}"><i class="fa-solid fa-user"></i> Mi cuenta</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/pages/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
@@ -77,7 +77,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <article class="caja"> 
-                        <a href="{% url 'microfono' %}"><img src="{% static 'Inicio/img/img-index/microfono.jpg' %}" alt="microfono gamer" class="img-fluid" id="img"></a>
+                        <a href="{% url 'mostrarMic' %}"><img src="{% static 'Inicio/img/img-index/microfono.jpg' %}" alt="microfono gamer" class="img-fluid" id="img"></a>
                         <p class="txtcaja">MICRÓFONOS</p>
                     </article>
 
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-xl-4 col-md-12 col-sm-12">
                     <article class="caja">
-                        <a href="{% url 'mouse' %}"><img src="{% static 'Inicio/img/img-index/mouse.jpg' %}" alt="mouse gamer" class="img-fluid" id="img"></a>
+                        <a href="#"><img src="{% static 'Inicio/img/img-index/mouse.jpg' %}" alt="mouse gamer" class="img-fluid" id="img"></a>
                         <p class="txtcaja"> MOUSE GAMER</p>
                     </article>
                 </div>

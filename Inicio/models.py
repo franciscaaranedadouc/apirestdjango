@@ -9,6 +9,8 @@ class TipoUsuario (models.Model):
     def __str__(self):
         return self.nombreTipo
 
+
+
 class Usuario (models.Model):
     username = models.CharField(primary_key=True,max_length=15,verbose_name="Username del usuario")
     contrasennia = models.CharField(max_length=30,verbose_name="Contraseña del usuario",null=False, blank=False)
@@ -52,7 +54,6 @@ class Categoria (models.Model):
 class TipoProd (models.Model):
     idTiporod = models.AutoField(primary_key=True,verbose_name="ID del tipo producto")
     nombreTipoProd = models.CharField(max_length=60,verbose_name="ID del tipo producto",null=False, blank=False)
-    imagenProd = models.ImageField(upload_to="none",verbose_name="Imagen del producto",null=True, blank=False)
     def __str__(self):
         return self.nombreTipoProd   
 class Marca (models.Model):
@@ -87,4 +88,5 @@ class Detalle (models.Model):
     producto = models.ForeignKey(Producto,on_delete=models.CASCADE)
     def __str__(self):
         return self.subTotal
+
 
