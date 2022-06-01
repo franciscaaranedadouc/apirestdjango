@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Usuario,Direccion,Comuna,Region,TipoUsuario, Producto, Marca, Modelo, Categoria
+from .models import Usuario,Direccion,Comuna,Region,TipoUsuario, Producto, Marca, Modelo, Categoria,TipoProd,Marca
 from django.contrib import messages
 
 # Create your views here.
@@ -11,6 +11,17 @@ def inicio(request):
 def iniciar(request):
 
     return render(request,'Inicio/inicio_sesion.html')
+
+def menuadmin(request):
+
+    return render(request,'Inicio/dashboard-admin.html')
+
+def addprod (request):
+    tipoProd = TipoProd.objects.all()
+    marca = Marca.objects.all()
+    contexto = {"tipoProd":tipoProd,"Marca":marca}
+
+    return render (request,'Inicio/agregar_producto.html',contexto)
 
 def mostrarMic(request):
     micros = Producto.objects.all()
@@ -47,6 +58,9 @@ def registrar_m (request):
         return redirect ('iniciar')
 
 
+
+
+
 def iniciar_sesion(request):
     usuario1 = request.POST['usuario']
     contra1 = request.POST['contra']
@@ -54,7 +68,7 @@ def iniciar_sesion(request):
         usuario2 = Usuario.objects.get(username = usuario1,contrasennia = contra1)
 
         if(usuario2.tipousuario.idTipoUsuario == 1):
-            return redirect ('registrarse')
+            return redirect ('menu_admin')
         else:               
             return redirect ('inicio')
 
@@ -67,8 +81,27 @@ def micro(request,id):
     productos = Producto.objects.get(idProducto = id)
     return render(request, "Inicio/mic1.html",{"prod": productos})
     
+def newProd(request):
+    nombre = request.POST['nomprod']
+    tipoProd = request.POST['tipoprod']
+    marca = request.POST['marcaprod']
+    stock = request.POST['stockprod']
+    imagen = request.FILES['imgprod']
+    desc = request.POST['descprod']
+    precio = request.POST['precio']
+    
+    idProd2 = TipoProd.objects.get(idTiporod = tipoProd)
+    marca2 = Marca.objects.get(idMarca = marca)
+    existe = None
+    try:
+        existe = Producto.objects.get(nombreProducto = nombre)
+        messages.error(request,'El producto ya existe')
+        return redirect ('addprod')
+    except:
+        Producto.objects.create(nombreProducto = nombre,precioProducto = precio,especificacionProd = desc,stockProd =stock,imagenProd = imagen,tipoprod = idProd2,marca = marca2)
+        return redirect ('menu_admin')
+    
 
-    
-    
+
     
     
