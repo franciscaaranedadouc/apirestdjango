@@ -1,11 +1,19 @@
 from django.shortcuts import render,redirect
-from .models import Usuario,Direccion,Comuna,Region,TipoUsuario, Producto, Marca, Modelo, Categoria,TipoProd,Marca
+from .models import Usuario,Direccion,Comuna,Region,TipoUsuario, Producto, Marca,Categoria,TipoProd,Marca
 from django.contrib import messages
 
 # Create your views here.
 def inicio(request):
 
     return render(request,'Inicio/index.html')
+
+def vistamod(request):
+    
+    return render(request,'Inicio/modificar_producto.html')
+def micadmin (request):
+    micros = Producto.objects.all()
+    return render (request,'Inicio/micadmin.html',{"mic": micros}) 
+
 
 
 def iniciar(request):
@@ -101,6 +109,13 @@ def newProd(request):
         return redirect ('menu_admin')
     
 
+def eliminarProducto(request, idProducto):
+    producto = Producto.objects.get(idProducto=idProducto)
+    producto.delete()
+
+    messages.success(request, '¡Producto Eliminado!')
+
+    return redirect('/micadmin')
 
     
     

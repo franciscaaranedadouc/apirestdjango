@@ -12,9 +12,13 @@ urlpatterns = [
     #Pag agregar producto
     path('agregar2/',newProd,name ="addProd"),
     path('agregar/',addprod,name="agregarprod"),
-    
+    #modificar un producto
+    path('modificar/',vistamod,name="modificar"),
+    path('eliminarProducto/<idProducto>',eliminarProducto,name="eliminarProducto"),
+
     #Pag menu admin
     path ('menuadmin/',menuadmin,name="menu_admin"),
+    path('micadmin/',micadmin,name="micadmin"),
     #Pagina iniciar
     path('iniciar/',iniciar,name="iniciar"),
     
@@ -24,6 +28,8 @@ urlpatterns = [
     path('microfonos/',mostrarMic, name="mostrarMic"),
     path('microfonos/<int:id>',micro, name="micro"),
     #Carrito
-    path('carrito/',carrito, name="carrito")
+    path('carrito/',carrito, name="carrito"),
+    
+    
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
