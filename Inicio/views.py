@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Usuario,Direccion,Comuna,Region,TipoUsuario, Producto, Marca,Categoria,TipoProd,Marca
 from django.contrib import messages
+import os 
 
 # Create your views here.
 def inicio(request):
@@ -14,7 +15,12 @@ def micadmin (request):
     micros = Producto.objects.all()
     return render (request,'Inicio/micadmin.html',{"mic": micros}) 
 
+def addprod (request):
+    tipoProd = TipoProd.objects.all()
+    marca = Marca.objects.all()
+    contexto = {"tipoProd":tipoProd,"Marca":marca}
 
+    return render (request,'Inicio/agregar_producto.html',contexto)   
 
 def iniciar(request):
 
@@ -28,12 +34,7 @@ def carrito(request):
 
     return render(request,'Inicio/carrito.html')
 
-def addprod (request):
-    tipoProd = TipoProd.objects.all()
-    marca = Marca.objects.all()
-    contexto = {"tipoProd":tipoProd,"Marca":marca}
 
-    return render (request,'Inicio/agregar_producto.html',contexto)
 
 def mostrarMic(request):
     micros = Producto.objects.all()
@@ -117,5 +118,30 @@ def eliminarProducto(request, idProducto):
 
     return redirect('/micadmin')
 
-    
-    
+
+ 
+def edicionProducto(request, idProducto):
+    tipoProd = TipoProd.objects.all()
+    marca = Marca.objects.all()
+    producto = Producto.objects.get(idProducto=idProducto)
+    return render(request,'Inicio/edicionProducto.html', {"producto": producto, "tipoProd":tipoProd,"Marca":marca})
+
+def editarProducto(request,idProducto):
+    producto = Producto.objects.get(idProducto=idProducto)
+    tiprod1 =request.POST['tipoprod'] 
+    tipoprod2 = TipoProd.objects.get(idTiporod =tiprod1)
+    marca1 = request.POST['marcaprod']
+    marca2 = Marca.objects.get(idMarca = marca1)
+    if (request.FILES.get("imgprod")):
+        fotoprod =  request.FILES['imgprod']
+        producto.imagenProd = fotoprod
+    producto.nombreProducto = request.POST.get('nomprod')
+    producto.tipoprod = tipoprod2
+    producto.marca = marca2
+    producto.stockProd = request.POST.get('stockprod')
+    producto.precioProducto = request.POST.get('precio')
+    producto.especificacionProd = request.POST.get('descprod')
+    producto.save()
+
+    return redirect('micadmin')
+

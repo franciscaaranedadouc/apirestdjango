@@ -7,6 +7,15 @@ body
     background-color: rgb(40, 3, 126);
     color: #fff;
 }
+.prod-size
+{
+    border-radius: 10px;
+    text-align: center;
+    height: auto;
+    width: 200px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    margin-bottom: 10px;
+}
 .datos
 {
     padding: 8px;

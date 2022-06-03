@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/xe',
-        'USER': 'hsc',
-        'PASSWORD': '206712872',
+        'USER': 'hscplus',
+        'PASSWORD': '12345',
         'TEST':{
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
