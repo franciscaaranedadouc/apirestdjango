@@ -19,7 +19,7 @@
 }
 /*Cabecera de la página (Idealmente una imagen)*/
 .img-hd{
-    background-image: url(/img/img-teclados/fondo_teclados.jpg);
+    background-image: url('/static/Inicio/img/img-teclados/teclado.jpg');
     width: auto;
     height: 400px;
     background-position: center;

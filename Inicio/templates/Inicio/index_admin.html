@@ -23,67 +23,19 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand fw-bold" href="#">HSC<br>Componentes</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="#"><i class="fa-solid fa-house"></i> Inicio</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bag-shopping"></i> Tienda</a></a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                       
-                      <li><a class="dropdown-item" href="{% url 'mostrarMic' %}">Micrófonos</a></li>
-                      <li><a class="dropdown-item" href="/pages/teclados.html">Teclados</a></li>
-                      <li><a class="dropdown-item" href="/pages/mouse.html">Mouse Gamer</a></li>
-                      <li><a class="dropdown-item" href="/pages/graficas.html">Tarjetas gráficas</a></li>
-                      <li><a class="dropdown-item" href="/pages/procesadores.html">Procesadores</a></li>
-                      <li><a class="dropdown-item" href="/pages/rams.html">Memorias</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'iniciar' %}"><i class="fa-solid fa-user"></i> Mi cuenta</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-                  </li>
-
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Busca lo mejor!" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-              </div>
-            </div>
-        </nav>
-        <div class="img-hd">
-            <div class="logo-img"><img class="img-fluid" src="{% static 'Inicio/img/logo/logo1.png' %}">ñ</div>
-            <div class="">
-            </div>
-
-        </div>
-    </header>
-
     <section class="compsyper">
         <div class="container">
-            <h1 class="text-break">Acá podrás encontrar lo mejor para poder armar tu setup 	&#128293;</h1>
-            <h2>Periféricos para la bestia &#9889;</h2>
+            <h1 class="text-break">Acá podrás encontrar las categorias de los productos que quieras modificar o eliminar &#128293;</h1>
             <div class="row align-items-center">
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <article class="caja"> 
-                        <a href="{% url 'mostrarMic' %}"><img src="{% static 'Inicio/img/img-index/microfono.jpg' %}" alt="microfono gamer" class="img-fluid" id="img"></a>
+                        <a href="{% url 'micadmin' %}"><img src="{% static 'Inicio/img/img-index/microfono.jpg' %}" alt="microfono gamer" class="img-fluid" id="img"></a>
                         <p class="txtcaja">MICRÓFONOS</p>
                     </article>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <article class="caja">
-                        <a href="{% url 'teclados' %}"><img src="{% static 'Inicio/img/img-index/teclado.jpg' %}" alt="teclado gamer" class="img-fluid" id="img"></a>
+                        <a href="{% url 'tecladoadmin'%}"><img src="{% static 'Inicio/img/img-index/teclado.jpg' %}" alt="teclado gamer" class="img-fluid" id="img"></a>
                         <p class="txtcaja"> TECLADOS</p>
                     </article>
                 </div>
