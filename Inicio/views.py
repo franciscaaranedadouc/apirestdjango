@@ -76,7 +76,7 @@ def graficaAdmin (request):
     return render (request,'Inicio/graficaAdmin.html',{"grafica": graficas}) 
     
 def grafica(request,id):
-    productos = Producto.objects.get(idProducto = 3)
+    productos = Producto.objects.get(idProducto = id)
     return render(request, "Inicio/mic1.html",{"prod": productos})    
 
 
