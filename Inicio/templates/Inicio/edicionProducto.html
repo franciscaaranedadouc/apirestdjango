@@ -31,7 +31,7 @@
         <h1>Agregar un producto</h1>
         <p style="font-weight: 200; padding-bottom: 10px;">En esta opción puede agregar un nuevo producto a la página.
             <br> Es importante que <b>llene todos los campos</b> para que pueda continuar.</p>
-        <form class="requires-validation form1" action="{% url 'editarProducto' producto.idProducto%}" method="POST"
+        <form class="requires-validation form1" action="{% url 'editarProducto' producto.idProducto %}" method="POST"
             enctype="multipart/form-data" id="formprod" name="formularioprod">
             {% csrf_token %}
 
@@ -58,10 +58,10 @@
             <div class="form-group mb-3 flex-column d-flex caja">
                 <label for="" class="datos">Tipo de producto<span class="text-danger"> *</span></label>
                 <select name="tipoprod" id="tipoprod" class="form-select negritas" aria-label="Productos" required>
-                    <option  selected disabled value="">Seleccione un tipo de producto</option>
-                    {% for i in tipoProd %}
-                    <option value="{{ i.idTiporod }}" >{{ i.nombreTipoProd }}</option>
-                    {% endfor %}
+                    {%if idTiporod == producto.idTiporod.tipoprod%}
+                    <option value="{{ producto.tipoprod.idTiporod }}" selected>{{producto.tipoprod.nombreTipoProd }}</option>
+                    {%endif%}
+
                 </select>
                 <div class="invalid-feedback">Debe seleccionar un tipo de producto</div>
             </div>
@@ -71,10 +71,16 @@
             <div class="form-group mb-3 flex-column d-flex caja">
                 <label for="" class="datos">Marca de producto<span class="text-danger"> *</span></label>
                 <select name="marcaprod" id="marcaprod" class="form-select negritas" aria-label="Productos" required>
-                    <option selected disabled value="{{producto.marca}}">Seleccione una marca</option>
-                    {% for x in Marca %}
-                    <option value="{{ x.idMarca }}" selected="tipoProd">{{ x.nombreMarca }}</option>
+                    {% for i in Marca %}
+
+                        {%if i.idMarca == producto.idMarca.marca%}
+                        <option value="{{producto.marca.idMarca}}" selected>{{producto.marca.nombreMarca }}</option>
+                        {% else %}
+                        <option value="{{i.idMarca}}">{{i.nombreMarca }}</option>
+
+                        {%endif%}
                     {% endfor %}
+            
                 </select>
                 <div class="invalid-feedback">El nombre del producto no puede estar vacío</div>
             </div>
