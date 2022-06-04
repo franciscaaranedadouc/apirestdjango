@@ -35,7 +35,8 @@ def carrito(request):
     return render(request,'Inicio/carrito.html')
 
 
-
+# -------------------- PRODUCTOS --------------------
+# MICROFONOS
 def mostrarMic(request):
     micros = Producto.objects.filter(tipoprod=1)
     return render(request, "Inicio/microfonos.html",{"mic": micros})
@@ -47,6 +48,10 @@ def micadmin (request):
 def micro(request,id):
     productos = Producto.objects.get(idProducto = id)
     return render(request, "Inicio/mic1.html",{"prod": productos})    
+
+
+
+# TECLADOS
 def mostrarTeclado(request):
     teclados = Producto.objects.filter(tipoprod=2)
     return render(request, "Inicio/teclados.html",{"teclado": teclados})
@@ -58,6 +63,68 @@ def tecladoadmin (request):
 def teclado(request,id):
     productos = Producto.objects.get(idProducto = id)
     return render(request, "Inicio/mic1.html",{"prod": productos})
+
+
+
+# GRAFICAS
+def mostrarGrafica(request):
+    graficas = Producto.objects.filter(tipoprod=3)
+    return render(request, "Inicio/graficas.html",{"grafica": graficas})
+
+def graficaAdmin (request):
+    graficas= Producto.objects.filter(tipoprod=3)
+    return render (request,'Inicio/graficaAdmin.html',{"grafica": graficas}) 
+    
+def grafica(request,id):
+    productos = Producto.objects.get(idProducto = 3)
+    return render(request, "Inicio/mic1.html",{"prod": productos})    
+
+
+
+# RAMS
+def mostrarRam(request):
+    rams = Producto.objects.filter(tipoprod=4)
+    return render(request, "Inicio/rams.html",{"ram": rams})
+
+def ramAdmin (request):
+    rams= Producto.objects.filter(tipoprod=4)
+    return render (request,'Inicio/ramAdmin.html',{"ram": rams}) 
+    
+def ram(request,id):
+    productos = Producto.objects.get(idProducto = id)
+    return render(request, "Inicio/mic1.html",{"prod": productos})    
+
+
+
+# MOUSES
+def mostrarMouse(request):
+    mouses = Producto.objects.filter(tipoprod=5)
+    return render(request, "Inicio/mouses.html",{"mouse": mouses})
+
+def mouseAdmin (request):
+    mouses= Producto.objects.filter(tipoprod=5)
+    return render (request,'Inicio/mouseAdmin.html',{"mouse": mouses}) 
+    
+def mouse(request,id):
+    productos = Producto.objects.get(idProducto = id)
+    return render(request, "Inicio/mic1.html",{"prod": productos})    
+
+
+
+# PROCESADORES
+def mostrarProcesador(request):
+    procesadores = Producto.objects.filter(tipoprod=6)
+    return render(request, "Inicio/procesadores.html",{"procesador": procesadores})
+
+def procesadorAdmin (request):
+    procesadores= Producto.objects.filter(tipoprod=6)
+    return render (request,'Inicio/procesadorAdmin.html',{"procesador": procesadores}) 
+    
+def procesador(request,id):
+    productos = Producto.objects.get(idProducto = id)
+    return render(request, "Inicio/mic1.html",{"prod": productos})  
+
+
 
 def registrarse(request):
     regiones = Region.objects.all()

@@ -20,8 +20,13 @@ urlpatterns = [
 
     #Pag menu admin
     path ('menuadmin/',menuadmin,name="menu_admin"),
+
     path('micadmin/',micadmin,name="micadmin"),
     path('tecladoadmin/',tecladoadmin,name="tecladoadmin"),
+    path('mouseAdmin/',mouseAdmin,name="mouseAdmin"),
+    path('ramAdmin/',ramAdmin,name="ramAdmin"),
+    path('graficaAdmin/',graficaAdmin,name="graficaAdmin"),
+    path('procesadorAdmin/',procesadorAdmin,name="procesadorAdmin"),
     #Pagina iniciar
     path('iniciar/',iniciar,name="iniciar"),
     
@@ -33,6 +38,20 @@ urlpatterns = [
 
     path('microfonos/',mostrarMic, name="mostrarMic"),
     path('microfonos/<int:id>',micro, name="micro"),
+
+    path('mouses/',mostrarMouse, name="mostrarMouse"),
+    path('mouses/<int:id>',mouse, name="mouse"),
+
+    path('graficas/',mostrarGrafica, name="mostrarGrafica"),
+    path('graficas/<int:id>',grafica, name="grafica"),
+
+    path('rams/',mostrarRam, name="mostrarRam"),
+    path('rams/<int:id>',ram, name="ram"),
+
+    path('procesadores/',mostrarProcesador, name="mostrarProcesador"),
+    path('procesadores/<int:id>',procesador, name="procesador"),
+
+
     #Carrito
     path('carrito/',carrito, name="carrito"),
     

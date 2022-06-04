@@ -74,6 +74,14 @@ WSGI_APPLICATION = 'Hsc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+# usuario original : hsc
+# clave: 206712872
+
+#del cheka xd 
+# hscplus - 12345
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
