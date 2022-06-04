@@ -200,7 +200,7 @@ def eliminarProducto(request, idProducto):
 
     messages.success(request, '¡Producto Eliminado!')
 
-    return redirect('/micadmin')
+    return redirect('indexadmin')
 
 
  
@@ -227,6 +227,6 @@ def editarProducto(request,idProducto):
     producto.precioProducto = request.POST.get('precio')
     producto.especificacionProd = request.POST.get('descprod')
     producto.save()
-
-    return redirect('micadmin')
+    messages.success(request, '¡Producto Modificado!')
+    return redirect('indexadmin')
 
