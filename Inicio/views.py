@@ -43,6 +43,10 @@ def mostrarMic(request):
 def micadmin (request):
     micros = Producto.objects.filter(tipoprod=1)
     return render (request,'Inicio/micadmin.html',{"mic": micros}) 
+    
+def micro(request,id):
+    productos = Producto.objects.get(idProducto = id)
+    return render(request, "Inicio/mic1.html",{"prod": productos})    
 def mostrarTeclado(request):
     teclados = Producto.objects.filter(tipoprod=2)
     return render(request, "Inicio/teclados.html",{"teclado": teclados})
@@ -50,7 +54,7 @@ def mostrarTeclado(request):
 def tecladoadmin (request):
     teclados = Producto.objects.filter(tipoprod=2)
     return render (request,'Inicio/tecladoadmin.html',{"teclado": teclados}) 
-    
+
 def teclado(request,id):
     productos = Producto.objects.get(idProducto = id)
     return render(request, "Inicio/mic1.html",{"prod": productos})
@@ -100,9 +104,7 @@ def iniciar_sesion(request):
         messages.error(request,'El usuario o la contraseña son incorrectos')
         return redirect ('iniciar')
     
-def micro(request,id):
-    productos = Producto.objects.get(idProducto = id)
-    return render(request, "Inicio/mic1.html",{"prod": productos})
+
     
 def newProd(request):
     nombre = request.POST['nomprod']
