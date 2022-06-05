@@ -5,11 +5,8 @@ from django.db import models
 class TipoUsuario (models.Model):
     idTipoUsuario = models.AutoField(primary_key=True,verbose_name="Id del tipo usuario")
     nombreTipo = models.CharField(max_length=30,verbose_name="Nombre del tipo de usuario",null=False, blank=False)
-    
     def __str__(self):
         return self.nombreTipo
-
-
 
 class Usuario (models.Model):
     username = models.CharField(primary_key=True,max_length=15,verbose_name="Username del usuario")
@@ -19,7 +16,7 @@ class Usuario (models.Model):
     email = models.CharField(max_length=150,verbose_name="Email del usuario",null=False, blank=False)    
     tipousuario = models.ForeignKey(TipoUsuario,on_delete=models.CASCADE)
     def __str__(self):
-        return self.username 
+        return self.nombre 
 class Comuna (models.Model):
     idComuna = models.AutoField(primary_key=True,verbose_name="Id de comuna",null=False, blank=False)
     nombreCom = models.CharField(max_length=40,verbose_name="Nombre comuna",null=False, blank=False)

@@ -155,6 +155,8 @@ def registrar_m (request):
         x = Usuario.objects.get(username = user)
         Direccion.objects.create(descripcionDir = direccion, usuario = x,region = region2)
         return redirect ('iniciar')
+
+        
 def iniciar_sesion(request):
     usuario1 = request.POST['usuario']
     contra1 = request.POST['contra']
@@ -163,8 +165,12 @@ def iniciar_sesion(request):
 
         if(usuario2.tipousuario.idTipoUsuario == 1):
             return redirect ('menu_admin')
-        else:               
-            return redirect ('inicio')
+        else:    
+            contexto = {"usuario":usuario2}
+
+           
+            return render(request, 'Inicio/index.html', contexto)
+            
 
 
     except:

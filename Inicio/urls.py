@@ -6,7 +6,19 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 
+    #Pagina iniciar/ Solo carga pagina
+    path('iniciar/',iniciar,name="iniciar"),
+    
+    #Valida usuario / Aqui tenemos las consultas
+    #Sacamos datos de aqui d1
+    path('iniciarsesion/',iniciar_sesion,name ="iniciarsesion"),
+
+    # La pagina principal
+    #Metemos datos aqui d1
     path('', inicio, name="inicio"),
+
+
+
     path('indexadmin',inicioadmin,name="indexadmin"),
 
     path('registrar/',registrar_m,name="registrar"),
@@ -27,11 +39,7 @@ urlpatterns = [
     path('ramAdmin/',ramAdmin,name="ramAdmin"),
     path('graficaAdmin/',graficaAdmin,name="graficaAdmin"),
     path('procesadorAdmin/',procesadorAdmin,name="procesadorAdmin"),
-    #Pagina iniciar
-    path('iniciar/',iniciar,name="iniciar"),
     
-    #Valida usuario
-    path('iniciarsesion/',iniciar_sesion,name ="iniciarsesion"),
     #Mostrar productos
     path('teclados',mostrarTeclado,name="teclados"),
     path('teclados/<int:id>',teclado, name="teclado"),
