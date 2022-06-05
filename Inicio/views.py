@@ -33,21 +33,27 @@ def menuadmin(request):
 def carrito(request):
 
     return render(request,'Inicio/carrito.html')
+def perfilusuario(request):
+    
+    return render(request,'Inicio/perfil-user.html')
+
 
 
 # -------------------- PRODUCTOS --------------------
 # MICROFONOS
-def mostrarMic(request):
+def mostrarMic(request,id):
     micros = Producto.objects.filter(tipoprod=1)
-    return render(request, "Inicio/microfonos.html",{"mic": micros})
+    contexto = {"mic": micros,"usuario":id}
+    return render(request, "Inicio/microfonos.html",contexto)
 
 def micadmin (request):
     micros = Producto.objects.filter(tipoprod=1)
     return render (request,'Inicio/micadmin.html',{"mic": micros}) 
     
-def micro(request,id):
+def micro(request,id, usuario):
     productos = Producto.objects.get(idProducto = id)
-    return render(request, "Inicio/mic1.html",{"prod": productos})    
+    contexto ={"prod": productos} 
+    return render(request, "Inicio/mic1.html",contexto)    
 
 
 
@@ -162,21 +168,23 @@ def iniciar_sesion(request):
     contra1 = request.POST['contra']
     try:
         usuario2 = Usuario.objects.get(username = usuario1,contrasennia = contra1)
-
+        
         if(usuario2.tipousuario.idTipoUsuario == 1):
             return redirect ('menu_admin')
         else:    
             contexto = {"usuario":usuario2}
-
-           
             return render(request, 'Inicio/index.html', contexto)
-            
-
 
     except:
         messages.error(request,'El usuario o la contraseña son incorrectos')
         return redirect ('iniciar')
     
+ 
+
+
+
+
+
 
     
 def newProd(request):

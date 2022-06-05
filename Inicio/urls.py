@@ -44,8 +44,8 @@ urlpatterns = [
     path('teclados',mostrarTeclado,name="teclados"),
     path('teclados/<int:id>',teclado, name="teclado"),
 
-    path('microfonos/',mostrarMic, name="mostrarMic"),
-    path('microfonos/<int:id>',micro, name="micro"),
+    path('microfonos/<id>',mostrarMic, name="mostrarMic"),
+    path('microfono/<idmic>',micro, name="micro"),
 
     path('mouses/',mostrarMouse, name="mostrarMouse"),
     path('mouses/<int:id>',mouse, name="mouse"),
@@ -62,6 +62,8 @@ urlpatterns = [
 
     #Carrito
     path('carrito/',carrito, name="carrito"),
+    #Usuario
+    path('miperfil/',perfilusuario, name="miperfil"),
     
 
 
