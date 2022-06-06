@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Usuario,Direccion,Comuna,Region,TipoUsuario, Producto, Marca,Categoria,TipoProd,Marca
 from django.contrib import messages
-import os 
+from .Carrito import Carrito
 
 # Create your views here.
 def inicio(request):
@@ -30,12 +30,41 @@ def menuadmin(request):
 
     return render(request,'Inicio/dashboard-admin.html')
 
-def carrito(request):
+def carrito(request,id):
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"usuario":usuario}
+    return render(request,'Inicio/carrito.html', contexto)
 
-    return render(request,'Inicio/carrito.html')
-def perfilusuario(request):
+def perfilusuario(request,id):
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"usuario":usuario}
     
-    return render(request,'Inicio/perfil-user.html')
+    return render(request,'Inicio/perfil-user.html',contexto)
+
+
+
+def mostrarperfil(request,id):
+    usuario = Usuario.objects.get(username=id)
+    direccion = Direccion.objects.get(usuario=id)
+    region = Region.objects.all()
+    comuna = Comuna.objects.all()
+    contexto = {"usuario":usuario, "direccion" : direccion,"region" : region,"comuna" : comuna}
+    return render(request, 'Inicio/perfil_usuario.html',contexto)    
+
+def modificarPerfil(request,id):
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"usuario":usuario}
+    usuario.username= request.POST.get('username')
+    usuario.nombre = request.POST.get('nomusu')
+    usuario.apellido = request.POST.get('apepusu')
+    usuario.email = request.POST.get('mailusu')
+    usuario.save()
+    messages.success(request, '¡Perfil modificado correctamente!')
+    return render (request,'Inicio/perfil-user.html',contexto)
+
+
+
+
 
 
 
@@ -43,92 +72,126 @@ def perfilusuario(request):
 # MICROFONOS
 def mostrarMic(request,id):
     micros = Producto.objects.filter(tipoprod=1)
-    contexto = {"mic": micros,"usuario":id}
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"mic": micros,"usuario":usuario}
     return render(request, "Inicio/microfonos.html",contexto)
 
-def micadmin (request):
+def micadmin (request,id):
     micros = Producto.objects.filter(tipoprod=1)
-    return render (request,'Inicio/micadmin.html',{"mic": micros}) 
-    
-def micro(request,id, usuario):
-    productos = Producto.objects.get(idProducto = id)
-    contexto ={"prod": productos} 
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"mic": micros,"usuario":usuario}
+    return render (request,'Inicio/micadmin.html',contexto) 
+  
+def micro(request,idmic,usuario):
+    productos = Producto.objects.get(idProducto = idmic)
+    username = Usuario.objects.get(username=usuario)
+    contexto ={"prod": productos,"usuario":username} 
     return render(request, "Inicio/mic1.html",contexto)    
 
 
 
 # TECLADOS
-def mostrarTeclado(request):
+def mostrarTeclado(request, id):
     teclados = Producto.objects.filter(tipoprod=2)
-    return render(request, "Inicio/teclados.html",{"teclado": teclados})
+    usuario = Usuario.objects.get(username=id)
+    contexto= {"teclado": teclados,"usuario":usuario}
+    return render(request, "Inicio/teclados.html",contexto)
 
-def tecladoadmin (request):
+def tecladoadmin (request,id):
     teclados = Producto.objects.filter(tipoprod=2)
-    return render (request,'Inicio/tecladoadmin.html',{"teclado": teclados}) 
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"teclado": teclados,"usuario":usuario}
+    return render (request,'Inicio/tecladoadmin.html',contexto) 
 
-def teclado(request,id):
-    productos = Producto.objects.get(idProducto = id)
-    return render(request, "Inicio/mic1.html",{"prod": productos})
-
-
-
-# GRAFICAS
-def mostrarGrafica(request):
-    graficas = Producto.objects.filter(tipoprod=3)
-    return render(request, "Inicio/graficas.html",{"grafica": graficas})
-
-def graficaAdmin (request):
-    graficas= Producto.objects.filter(tipoprod=3)
-    return render (request,'Inicio/graficaAdmin.html',{"grafica": graficas}) 
-    
-def grafica(request,id):
-    productos = Producto.objects.get(idProducto = id)
-    return render(request, "Inicio/mic1.html",{"prod": productos})    
-
-
-
-# RAMS
-def mostrarRam(request):
-    rams = Producto.objects.filter(tipoprod=4)
-    return render(request, "Inicio/rams.html",{"ram": rams})
-
-def ramAdmin (request):
-    rams= Producto.objects.filter(tipoprod=4)
-    return render (request,'Inicio/ramAdmin.html',{"ram": rams}) 
-    
-def ram(request,id):
-    productos = Producto.objects.get(idProducto = id)
-    return render(request, "Inicio/mic1.html",{"prod": productos})    
-
-
+def teclado(request,idk, usuario):
+    productos = Producto.objects.get(idProducto = idk)
+    username = Usuario.objects.get(username=usuario)
+    contexto = {"prod": productos,"usuario":username}
+    return render(request, "Inicio/mic1.html",contexto)
 
 # MOUSES
-def mostrarMouse(request):
+def mostrarMouse(request,id):
     mouses = Producto.objects.filter(tipoprod=5)
-    return render(request, "Inicio/mouses.html",{"mouse": mouses})
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"mouse": mouses,"usuario":usuario}
+    return render(request, "Inicio/mouses.html",contexto)
 
-def mouseAdmin (request):
+def mouseAdmin (request,id):
     mouses= Producto.objects.filter(tipoprod=5)
-    return render (request,'Inicio/mouseAdmin.html',{"mouse": mouses}) 
+    usuario = Usuario.objects.get(username=id)
+    contexto = {"mouse": mouses,"usuario":usuario}
+    return render (request,'Inicio/mouseAdmin.html',contexto) 
     
-def mouse(request,id):
-    productos = Producto.objects.get(idProducto = id)
-    return render(request, "Inicio/mic1.html",{"prod": productos})    
+def mouse(request,idm,usuario):
+    usuario = Usuario.objects.get(username=usuario)
+    productos = Producto.objects.get(idProducto = idm)
+    contexto = {"prod": productos,"usuario":usuario}
+    return render(request, "Inicio/mic1.html",contexto)    
 
+# GRAFICAS
+def mostrarGrafica(request,id):
+    graficas = Producto.objects.filter(tipoprod=3)
+    usuario = Usuario.objects.get(username= id)
+    contexto = {"grafica": graficas,"usuario":usuario}
+    return render(request, "Inicio/graficas.html",contexto)
 
+def graficaAdmin (request,id):
+    graficas= Producto.objects.filter(tipoprod=3)
+    usuario = Usuario.objects.get(username=id)
+    contexto ={"grafica": graficas,"usuario":usuario}
+    return render (request,'Inicio/graficaAdmin.html',contexto) 
+    
+def grafica(request,idg,usuario):
+    productos = Producto.objects.get(idProducto = idg)
+    usuario = Usuario.objects.get(username= usuario)
+    contexto = {"prod": productos,"usuario":usuario}
+    return render(request, "Inicio/mic1.html",contexto)    
 
 # PROCESADORES
-def mostrarProcesador(request):
+def mostrarProcesador(request,id):
     procesadores = Producto.objects.filter(tipoprod=6)
-    return render(request, "Inicio/procesadores.html",{"procesador": procesadores})
+    usuario = Usuario.objects.get(username= id)
+    contexto = {"procesador": procesadores,"usuario":usuario}
+    return render(request, "Inicio/procesadores.html",contexto)
 
-def procesadorAdmin (request):
+def procesadorAdmin (request,id):
     procesadores= Producto.objects.filter(tipoprod=6)
-    return render (request,'Inicio/procesadorAdmin.html',{"procesador": procesadores}) 
+    usuario = Usuario.objects.get(username= id)
+    contexto = {"procesador": procesadores,"usuario":usuario}
+    return render (request,'Inicio/procesadorAdmin.html',contexto) 
     
-def procesador(request,id):
-    productos = Producto.objects.get(idProducto = id)
-    return render(request, "Inicio/mic1.html",{"prod": productos})  
+def procesador(request,idp,usuario):
+    productos = Producto.objects.get(idProducto = idp)
+    usuario = Usuario.objects.get(username= usuario)
+    contexto = {"prod": productos,"usuario":usuario}
+    return render(request, "Inicio/mic1.html",contexto)  
+
+# RAMS
+def mostrarRam(request,id):
+    rams = Producto.objects.filter(tipoprod=4)
+    usuario = Usuario.objects.get(username= id)
+    contexto = {"ram": rams,"usuario":usuario}
+    return render(request, "Inicio/rams.html",contexto)
+
+def ramAdmin (request,id):
+    rams= Producto.objects.filter(tipoprod=4)
+    usuario = Usuario.objects.get(username= id)
+    contexto = {"ram": rams,"usuario":usuario}
+    return render (request,'Inicio/ramAdmin.html',contexto) 
+    
+def ram(request,idr,usuario):
+    productos = Producto.objects.get(idProducto = idr)
+    usuario = Usuario.objects.get(username= usuario)
+    contexto = {"prod": productos,"usuario":usuario}
+    return render(request, "Inicio/mic1.html",contexto )    
+
+
+
+
+
+
+
+
 
 
 
@@ -173,7 +236,8 @@ def iniciar_sesion(request):
             return redirect ('menu_admin')
         else:    
             contexto = {"usuario":usuario2}
-            return render(request, 'Inicio/index.html', contexto)
+            
+            return render(request, 'Inicio/index.html', contexto)            
 
     except:
         messages.error(request,'El usuario o la contraseña son incorrectos')
@@ -243,4 +307,42 @@ def editarProducto(request,idProducto):
     producto.save()
     messages.success(request, '¡Producto Modificado!')
     return redirect('indexadmin')
+    
+
+
+
+
+def agregar_producto(request, idProducto, usuario):
+    usuario2 = Usuario.objects.get(username=usuario)
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idProducto = idProducto)
+    contexto = {"producto":producto,"usuario":usuario2}
+    carrito.agregar(producto)
+    return render(request,'Inicio/carrito.html',contexto)
+
+def eliminar_producto(request, idProducto,usuario):
+    usuario2 = Usuario.objects.get(username=usuario)
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idProducto = idProducto)
+    contexto = {"producto":producto,"usuario":usuario2}
+    carrito.eliminar(producto)
+    return render(request,'Inicio/carrito.html',contexto)
+
+def restar_producto(request, idProducto,usuario):
+    usuario2 = Usuario.objects.get(username=usuario)
+    carrito = Carrito(request)
+    producto = Producto.objects.get(idProducto = idProducto)
+    contexto = {"producto":producto,"usuario":usuario2}
+    carrito.restar(producto)
+    return render(request,'Inicio/carrito.html',contexto)
+
+def limpiar_producto(request,usuario):
+    usuario2 = Usuario.objects.get(username=usuario)
+    carrito = Carrito(request)
+    contexto = {"usuario":usuario2}
+    carrito.limpiar()
+    return render(request,'Inicio/carrito.html',contexto)
+
+
+
 

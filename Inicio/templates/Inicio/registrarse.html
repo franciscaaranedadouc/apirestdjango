@@ -33,33 +33,67 @@
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="{%static 'Templates/Inicio/index.html' %}"><i class="fa-solid fa-house"></i> Inicio</a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                      <li class="nav-item ">
+                          <a class="nav-link active " aria-current="page" href="{% url 'inicio' %}"><i class="fa-solid fa-house "></i>
+                              Inicio</a>
                       </li>
                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bag-shopping"></i> Tienda</a></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="/pages/microfonos.html">Micrófonos</a></li>
-                          <li><a class="dropdown-item" href="/pages/teclados.html">Teclados</a></li>
-                          <li><a class="dropdown-item" href="/pages/mouse.html">Mouse Gamer</a></li>
-                          <li><a class="dropdown-item" href="/pages/graficas.html">Tarjetas gráficas</a></li>
-                          <li><a class="dropdown-item" href="/pages/procesadores.html">Procesadores</a></li>
-                          <li><a class="dropdown-item" href="/pages/rams.html">Memorias</a></li>
-                        </ul>
+                          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bag-shopping"></i> Tienda</a></a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% if usuario %}
+                              <li><a class="dropdown-item" href="{% url 'mostrarMic' usuario.username %}">Micrófonos</a></li>
+                            {% else %} 
+                              <li><a class="dropdown-item" href="{% url 'iniciar' %}">Micrófonos</a></li>
+                            {% endif %}
+
+                            {% if usuario %}
+                              <li><a class="dropdown-item" href="{% url 'teclados'  usuario.username %}">Teclados</a></li>
+                            {% else %}
+                              <li><a class="dropdown-item" href="{% url 'iniciar' %}">Teclados</a></li> 
+                            {% endif %}
+
+                            {% if usuario %}
+                              <li><a class="dropdown-item" href="{% url 'mostrarMouse' usuario.username %}">Mouse Gamer</a></li>
+                            {% else %}
+                              <li><a class="dropdown-item" href="{% url 'iniciar' %}">Mouse Gamer</a></li> 
+                            {% endif %}
+
+                            {% if usuario %}
+                              <li><a class="dropdown-item" href="{% url 'mostrarGrafica' usuario.username  %}">Tarjetas gráficas</a></li>
+                            {% else %} 
+                              <li><a class="dropdown-item" href="{% url 'iniciar' %}">Tarjetas gráficas</a></li>
+                            {% endif %}
+
+                            {% if usuario %}
+                              <li><a class="dropdown-item" href="{% url 'mostrarProcesador' usuario.username  %}">Procesadores</a></li>
+                            {% else %}
+                              <li><a class="dropdown-item" href="{% url 'iniciar' %}">Procesadores</a></li> 
+                            {% endif %}
+
+                            {% if usuario %}
+                              <li><a class="dropdown-item" href="{% url 'mostrarRam' usuario.username%}">Memorias</a></li>
+                            {% else %}
+                              <li><a class="dropdown-item" href="{% url 'iniciar' %}">Memorias</a></li> 
+                            {% endif %}
+                          </ul>
+                        </li>
+                      <li class="nav-item">
+                          {% if usuario %}
+                              <a class="nav-link active " aria-current="page" href="{% url 'miperfil' usuario.username %}"><i class="fa-solid fa-user"></i>{{usuario.username}}</a>
+                          {% else %}
+                              <a class="nav-link active " aria-current="page" href="{% url 'iniciar' %}"><i class="fa-solid fa-user"></i> Iniciar Sesion</a>
+                          {% endif %}
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/pages/inicio_sesion.html"><i class="fa-solid fa-user"></i> Mi cuenta</a>
+                          {% if usuario %}
+                          <a class="nav-link active" aria-current="page" href="{%url 'carrito' usuario.username %}"> Carrito</a>
+                          {% else %}
+                          <a class="nav-link active" aria-current="page" href="#"> Carrito</a>
+                          {% endif %}
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/pages/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-                      </li>
-    
-                    </ul>
-                    <form class="d-flex">
-                      <input class="form-control me-2" type="search" placeholder="Busca lo mejor!" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
+
+                  </ul>
                   </div>
                 </div>
               </nav>
@@ -101,7 +135,7 @@
             <div class="col-lg-5 d-flex flex-column aling-items-end min-vh-100">
                 <div class="px-lg-5 py-lg-4 p-4 w-100 aling-self-center">
                   <div class="text-start boton-volver">
-                    <a href="/pages/inicio_sesion.html" class="boton btn btn-primary">Volver</a>
+                    <a href="{% url 'iniciar' %}" class="boton btn btn-primary">Volver</a>
                   </div>
                     <h1 class="font-weight-bold nb-2">Registarse</h1>
                     <form class="mb-8" action="{% url 'registrar' %}" method="POST" enctype="multipart/form-data" id="form1" name="formulario1">

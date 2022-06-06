@@ -24,44 +24,75 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold" href="/index.html">HSC<br>Componentes</a>
+                <a class="navbar-brand fw-bold" href="{% url 'inicio' %}">HSC<br>Componentes</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active " aria-current="page" href="/index.html"><i class="fa-solid fa-house"></i>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item ">
+                            <a class="nav-link active " aria-current="page" href="{% url 'inicio' %}"><i class="fa-solid fa-house "></i>
                                 Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bag-shopping"></i> Tienda</a></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <li><a class="dropdown-item" href="/pages/microfonos.html">Micrófonos</a></li>
-                              <li><a class="dropdown-item" href="/pages/teclados.html">Teclados</a></li>
-                              <li><a class="dropdown-item" href="/pages/mouse.html">Mouse Gamer</a></li>
-                              <li><a class="dropdown-item" href="/pages/graficas.html">Tarjetas gráficas</a></li>
-                              <li><a class="dropdown-item" href="/pages/procesadores.html">Procesadores</a></li>
-                              <li><a class="dropdown-item" href="/pages/rams.html">Memorias</a></li>
+                              {% if usuario %}
+                                <li><a class="dropdown-item" href="{% url 'mostrarMic' usuario.username %}">Micrófonos</a></li>
+                              {% else %} 
+                                <li><a class="dropdown-item" href="{% url 'iniciar' %}">Micrófonos</a></li>
+                              {% endif %}
+
+                              {% if usuario %}
+                                <li><a class="dropdown-item" href="{% url 'teclados'  usuario.username %}">Teclados</a></li>
+                              {% else %}
+                                <li><a class="dropdown-item" href="{% url 'iniciar' %}">Teclados</a></li> 
+                              {% endif %}
+
+                              {% if usuario %}
+                                <li><a class="dropdown-item" href="{% url 'mostrarMouse' usuario.username %}">Mouse Gamer</a></li>
+                              {% else %}
+                                <li><a class="dropdown-item" href="{% url 'iniciar' %}">Mouse Gamer</a></li> 
+                              {% endif %}
+
+                              {% if usuario %}
+                                <li><a class="dropdown-item" href="{% url 'mostrarGrafica' usuario.username  %}">Tarjetas gráficas</a></li>
+                              {% else %} 
+                                <li><a class="dropdown-item" href="{% url 'iniciar' %}">Tarjetas gráficas</a></li>
+                              {% endif %}
+
+                              {% if usuario %}
+                                <li><a class="dropdown-item" href="{% url 'mostrarProcesador' usuario.username  %}">Procesadores</a></li>
+                              {% else %}
+                                <li><a class="dropdown-item" href="{% url 'iniciar' %}">Procesadores</a></li> 
+                              {% endif %}
+
+                              {% if usuario %}
+                                <li><a class="dropdown-item" href="{% url 'mostrarRam' usuario.username%}">Memorias</a></li>
+                              {% else %}
+                                <li><a class="dropdown-item" href="{% url 'iniciar' %}">Memorias</a></li> 
+                              {% endif %}
                             </ul>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/pages/inicio_sesion.html"><i class="fa-solid fa-user"></i> Mi
-                                cuenta</a>
+                            {% if usuario %}
+                                <a class="nav-link active " aria-current="page" href="{% url 'miperfil' usuario.username %}"><i class="fa-solid fa-user"></i>{{usuario.username}}</a>
+                            {% else %}
+                                <a class="nav-link active " aria-current="page" href="{% url 'iniciar' %}"><i class="fa-solid fa-user"></i> Iniciar Sesion</a>
+                            {% endif %}
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/pages/carrito.html"><i
-                                    class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                            {% if usuario %}
+                            <a class="nav-link active" aria-current="page" href="{%url 'carrito' usuario.username %}"> Carrito</a>
+                            {% else %}
+                            <a class="nav-link active" aria-current="page" href="#"> Carrito</a>
+                            {% endif %}
                         </li>
 
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Busca lo mejor!"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
+
                 </div>
             </div>
         </nav>
@@ -85,32 +116,29 @@
         <div class="row">
             <div class="col-6 columnas">
                 <div class="card h-100 py-2">
+                    <a href="{% url 'mostrarperfil' usuario.username%}" style="text-decoration: none; color: rgb(0,0,0);">
                     <p class="align-items-start fw-bold titulo-card "><i class="fa-solid fa-user-plus"></i> Modificar mi perfil </p>
                     <p class="desc">¡Presione acá si desea modificar su perfil de usuario!</p>
+                    </a>
                 </div>    
             </div>
             <div class="col-6 columnas">
                 <div class="card h-100 py-2">
+                    <a href="/pages/historial_compra.html" style="text-decoration: none; color: rgb(0,0,0);">
                     <p class="fw-bold align-items-start titulo-card"><i class="fa-solid fa-calendar"></i> Ver historial de compras</p>
                     <p class="desc">¡Presione acá si desea Ver todo su historial de compras!</p>
+                    </a>
                 </div> 
             </div>
         </div>
-        <div class="row">
-            <div class="col-6 columnas">
-                <div class="card h-100 py-2">
-                    <p class="fw-bold align-items-start titulo-card"><i class="fa-solid fa-magnifying-glass-dollar iconos"></i> Rastrear mi pedido</p>
-                    <p class="desc">¡Presione acá si desea si tienes un pedido pendiente y deseas ver qué tan cerca lo tienes!</p>
-                </div> 
-            </div>
-            <div class="col-6 columnas">
-                <div class="card h-100 py-2">
-                    <p class="fw-bold align-items-start titulo-card"><i class="fa-solid fa-house-chimney"></i> Mis direcciones</p>
-                    <p class="desc">¡Presione acá si desea ver el listado de las direcciones registradas!</p>
-                </div> 
-            </div>
-
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
         </div>
+        {% endfor %}
+        {% endif %}
         
         
     </div>
@@ -119,6 +147,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{% static 'Inicio/js/gestionMicros.js' %}"></script>
 </body>
 
 </html>

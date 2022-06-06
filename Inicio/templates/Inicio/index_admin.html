@@ -25,6 +25,9 @@
 <body>
     <section class="compsyper">
         <div class="container">
+            <div class="text-start boton-volver">
+                <a href="{% url 'menu_admin' %}" class="boton btn btn-primary">Volver</a>
+            </div>
             <h1 class="text-break">Acá podrás encontrar las categorias de los productos que quieras modificar o eliminar &#128293;</h1>
             {% if messages %}
             {% for message in messages %}
@@ -37,19 +40,19 @@
             <div class="row align-items-center">
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <article class="caja"> 
-                        <a href="{% url 'micadmin' %}"><img src="{% static 'Inicio/img/img-index/microfono.jpg' %}" alt="microfono gamer" class="img-fluid" id="img"></a>
+                        <a href="{% url 'micadmin' 'admin' %}"><img src="{% static 'Inicio/img/img-index/microfono.jpg' %}" alt="microfono gamer" class="img-fluid" id="img"></a>
                         <p class="txtcaja">MICRÓFONOS</p>
                     </article>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <article class="caja">
-                        <a href="{% url 'tecladoadmin'%}"><img src="{% static 'Inicio/img/img-index/teclado.jpg' %}" alt="teclado gamer" class="img-fluid" id="img"></a>
+                        <a href="{% url 'tecladoadmin' 'admin' %}"><img src="{% static 'Inicio/img/img-index/teclado.jpg' %}" alt="teclado gamer" class="img-fluid" id="img"></a>
                         <p class="txtcaja"> TECLADOS</p>
                     </article>
                 </div>
                 <div class="col-xl-4 col-md-12 col-sm-12">
                     <article class="caja">
-                        <a href="{% url 'mouseAdmin'%}"><img src="{% static 'Inicio/img/img-index/mouse.jpg' %}" alt="mouse gamer" class="img-fluid" id="img"></a>
+                        <a href="{% url 'mouseAdmin' 'admin' %}"><img src="{% static 'Inicio/img/img-index/mouse.jpg' %}" alt="mouse gamer" class="img-fluid" id="img"></a>
                         <p class="txtcaja"> MOUSE GAMER</p>
                     </article>
                 </div>
@@ -59,23 +62,22 @@
     </section>    
     <section class="compsyper">
         <div class="container">
-            <h2>Componentes para armar a la bestia &#129409;</h2>
             <div class="row align-items-center">
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <article class="caja">
-                        <a href="{% url 'graficaAdmin'%}"><img src="{% static 'Inicio/img/img-index/grafica.png' %}" alt="tarjeta grafica" class="img-fluid" id="img"></a>
+                        <a href="{% url 'graficaAdmin' 'admin' %}"><img src="{% static 'Inicio/img/img-index/grafica.png' %}" alt="tarjeta grafica" class="img-fluid" id="img"></a>
                         <p class="txtcaja"> TARJETAS GRÁFICAS</p>
                     </article>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <article class="caja">
-                        <a href="{% url 'procesadorAdmin'%}"><img src="{% static 'Inicio/img/img-index/procesador.jpg' %}" alt="Procesador PC" class="img-fluid" id="img"></a>
+                        <a href="{% url 'procesadorAdmin' 'admin' %}"><img src="{% static 'Inicio/img/img-index/procesador.jpg' %}" alt="Procesador PC" class="img-fluid" id="img"></a>
                         <p class="txtcaja"> PROCESADORES</p>
                     </article>
                 </div>
                 <div class="col-xl-4 col-md-12 col-sm-12">
                     <article class="caja">
-                        <a href="{% url 'ramAdmin'%}"><img src="{% static 'Inicio/img/img-index/rampc.jpg' %}" alt="trident z rgb" class="img-fluid" id="img"></a>
+                        <a href="{% url 'ramAdmin' 'admin' %}"><img src="{% static 'Inicio/img/img-index/rampc.jpg' %}" alt="trident z rgb" class="img-fluid" id="img"></a>
                         <p class="txtcaja">MEMORIAS</p>
                     </article>
                 </div>
