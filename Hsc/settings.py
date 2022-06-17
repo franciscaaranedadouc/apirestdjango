@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'Inicio',
+    'rest_hsc',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +76,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Hsc.wsgi.application'
 
+REST_FRAMEWORK={
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
