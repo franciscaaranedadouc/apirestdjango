@@ -14,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated
 @csrf_exempt
 
 @api_view(['GET', 'POST'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def lista_usuarios(request):
     if request.method == 'GET':
         usuario = Usuario.objects.all()
@@ -30,7 +30,7 @@ def lista_usuarios(request):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 #######################
 @api_view(['GET', 'POST'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def agregarU(request):
     if request.method == 'POST':
         data2 = JSONParser().parse(request)
@@ -42,7 +42,7 @@ def agregarU(request):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def controlU(request,usuario1):
     try:
         usuario = Usuario.objects.get(username = usuario1)
@@ -67,7 +67,7 @@ def controlU(request,usuario1):
         return Response(status = status.HTTP_204_NO_CONTENT)
 ##################################################PRODUCTOS##################################################
 @api_view(['GET', 'POST'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def lista_productos(request):
     if request.method == 'GET':
         productos = Producto.objects.all()
@@ -83,7 +83,7 @@ def lista_productos(request):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 #######################
 @api_view(['GET', 'POST'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def agregarP(request):
     if request.method == 'POST':
         data2 = JSONParser().parse(request)
@@ -95,7 +95,7 @@ def agregarP(request):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 #######################
 @api_view(['GET','PUT','DELETE'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def controlP(request,idproductos):
     try:
         productos = Producto.objects.get(idProducto = idproductos)
@@ -120,7 +120,7 @@ def controlP(request,idproductos):
         return Response(status = status.HTTP_204_NO_CONTENT)
 ##################################################MARCA##################################################
 @api_view(['GET', 'POST'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def lista_marcas(request):
     if request.method == 'GET':
         marcas = Marca.objects.all()
@@ -136,7 +136,7 @@ def lista_marcas(request):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 #######################
 @api_view(['GET', 'POST'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def agregarM(request):
     if request.method == 'POST':
         data2 = JSONParser().parse(request)
@@ -148,7 +148,7 @@ def agregarM(request):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-##@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def controlM(request,idmarcas):
     try:
         marcas = Marca.objects.get(idMarca = idmarcas)

@@ -1,5 +1,6 @@
 from django.urls import path
 from rest_hsc.views import lista_usuarios,agregarU,controlU, lista_productos, agregarP,controlP,lista_marcas,agregarM,controlM
+from rest_hsc.viewsLogin import login
 
 urlpatterns = [
     #Usuarios
@@ -14,6 +15,7 @@ urlpatterns = [
     path('lista_marcas/',lista_marcas,name="lista_marcas"),
     path('agregarM/',agregarM,name="agregarM"),
     path('controlM/<idmarcas>',controlM,name="controlM"),
+    path('login/',login,name="login"),
 
 
 ]
