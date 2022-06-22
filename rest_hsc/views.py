@@ -171,4 +171,3 @@ def controlM(request,idmarcas):
     elif request.method == 'DELETE':
         marcas.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
-        
