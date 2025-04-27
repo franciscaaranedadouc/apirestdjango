@@ -10,7 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path, os
+import os
+import cx_Oracle
+
+cx_Oracle.init_oracle_client(
+    lib_dir="/usr/local/opt/instantclient-basic/lib"
+)
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,9 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'Inicio',
-    'rest_hsc',
-    'rest_framework.authtoken',
+    'api',
+    'Inicio'
 ]
 
 MIDDLEWARE = [
@@ -86,19 +91,13 @@ REST_FRAMEWORK={
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
-# usuario original : hsc
-# clave: 206712872
-
-#del cheka xd 
-# hscplus - 12345
-
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/xe',
-        'USER': 'proyecto1',
-        'PASSWORD': '206712872',
+        'USER': 'usuario',
+        'PASSWORD': 'usuario1',
         'TEST':{
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
