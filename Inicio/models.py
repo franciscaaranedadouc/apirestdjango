@@ -65,15 +65,48 @@ class Modelo (models.Model):
     marca = models.ForeignKey(Marca,on_delete=models.CASCADE)
     def __str__(self):
         return self.nombreModelo
-class Producto (models.Model):
-    idProducto = models.AutoField(primary_key=True,verbose_name="Id del Producto")
-    nombreProducto = models.CharField(max_length=50,verbose_name="Nombre del Producto",null=False, blank=False)
-    precioProducto = models.IntegerField(verbose_name="Precio del Producto",null=False, blank=False)
-    especificacionProd = models.CharField(max_length=900,verbose_name="Especificaciones del Producto",null=False, blank=False)
-    stockProd = models.IntegerField(verbose_name="Stock del Producto",null=False, blank=False)
-    imagenProd =models.ImageField(upload_to="productos",verbose_name="Imagen del Producto",null=True, blank=False)
-    tipoprod = models.ForeignKey(TipoProd,on_delete=models.CASCADE)
-    marca = models.ForeignKey(Marca,on_delete=models.CASCADE)
+class Producto(models.Model):
+    idProducto       = models.AutoField(
+                          primary_key=True,
+                          verbose_name="Id del Producto"
+                       )
+    nombreProducto   = models.CharField(
+                          max_length=50,
+                          verbose_name="Nombre del Producto"
+                       )
+    precioProducto   = models.IntegerField(
+                          verbose_name="Precio del Producto"
+                       )
+    especificacionProd = models.CharField(
+                          max_length=900,
+                          verbose_name="Especificaciones del Producto"
+                       )
+    stockProd        = models.IntegerField(
+                          verbose_name="Stock del Producto"
+                       )
+    imagenProd       = models.ImageField(
+                          upload_to="productos",
+                          verbose_name="Imagen del Producto",
+                          null=True
+                       )
+    tipoprod         = models.ForeignKey(
+                          TipoProd,
+                          on_delete=models.CASCADE
+                       )
+    marca            = models.ForeignKey(
+                          Marca,
+                          on_delete=models.CASCADE
+                       )
+    # ← Aquí está la relación categoróa producto
+    categoria        = models.ForeignKey(
+                          Categoria,
+                          on_delete=models.CASCADE,
+                          verbose_name="Categoría",
+                          null=True,  # o False si siempre debe tener categoría
+                          blank=True,
+                          db_column='IDCATEGORIA'
+                       )
+
     def __str__(self):
         return self.nombreProducto
 
